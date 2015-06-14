@@ -12,14 +12,22 @@ angular.module 'qiitenaiApp'
         return if $scope.newPost.title is '' and $scope.newPost.html is ''
         $http.post '/api/posts',
             title: $scope.newPost.title
+            tags:  $scope.newPost.tags
             html:  $scope.newPost.html
-        $location.path '/'
+        .success (res) ->
+            $location.path '/'+User.get().name+'/'
+        .error (err) ->
+            $scope.message = '投稿に失敗しました。しばらく時間をおいてからもう一度試してください。'+err
 
-    $scope.addDraft = ->
-        return if $scope.newPost is ''
-        $http.post '/api/drafts',
-            title: $scope.newPost.title
-            html:  $scope.newPost.html
+    $scope.moveToDraft = (post) ->
+        post.isDraft = true
+        $http.put '/api/posts', post
+        .success (res) ->
+            $scope.message = '記事を下書きに移動しました。'
+            $location.path '/draft'
+        .error (err) ->
+            '操作に失敗しました。しばらく時間をおいてからもう一度試してください。'+err
 
-    $scope.deletePost = (post) ->
+    $scope.deleteDraft = (post) ->
         $http.delete '/api/posts/' + post._id
+
