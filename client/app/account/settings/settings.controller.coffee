@@ -9,7 +9,7 @@ angular.module 'qiitenaiApp'
     if form.$valid
       Auth.changePassword $scope.user.oldPassword, $scope.user.newPassword
       .then ->
-        $scope.message = 'Password successfully changed.'
+        $scope.message = 'パスワードは正常に変更されました。'
 
       .catch ->
         form.password.$setValidity 'mongoose', false
