@@ -6,7 +6,7 @@ var crypto = require('crypto');
 var authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
-  name: String,
+  username: String,
   email: { type: String, lowercase: true },
   role: {
     type: String,
@@ -18,7 +18,8 @@ var UserSchema = new Schema({
   facebook: {},
   twitter: {},
   google: {},
-  github: {}
+  github: {},
+  created: { type: Date, default: Date.now }
 });
 
 /**
@@ -40,8 +41,8 @@ UserSchema
   .virtual('profile')
   .get(function() {
     return {
-      'name': this.name,
-      'role': this.role
+        'username': this.username,
+        'role': this.role
     };
   });
 
@@ -65,7 +66,7 @@ UserSchema
   .validate(function(email) {
     if (authTypes.indexOf(this.provider) !== -1) return true;
     return email.length;
-  }, 'Email cannot be blank');
+  }, 'メールアドレスを入力してください。');
 
 // Validate empty password
 UserSchema
@@ -73,7 +74,7 @@ UserSchema
   .validate(function(hashedPassword) {
     if (authTypes.indexOf(this.provider) !== -1) return true;
     return hashedPassword.length;
-  }, 'Password cannot be blank');
+  }, 'パスワードを入力してください。');
 
 // Validate email is not taken
 UserSchema
@@ -88,7 +89,7 @@ UserSchema
       }
       respond(true);
     });
-}, 'The specified email address is already in use.');
+}, 'このメールアドレスは既に使用されています。');
 
 var validatePresenceOf = function(value) {
   return value && value.length;
