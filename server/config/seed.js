@@ -7,6 +7,7 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var Post = require('../api/post/post.model');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -46,4 +47,20 @@ User.find({}).remove(function() {
       console.log('finished populating users');
     }
   );
+});
+
+Post.find({}).remove(function() {
+    Post.create({
+        title: 'おいしいラーメン屋の見つけ方',
+        markdown: '# あえて有名店をはずす\n\n 有名店はもちろんおいしいラーメンを出すところが多いですが、そこをあえて外してみましょう。\n\n# 激戦区をねらえ\n\n京都、大阪',
+        tags: ['ラーメン', 'つけ麺', 'グルメ'],
+        published: true
+    }, {
+        title: '非公開記事',
+        markdown: '# 非公開記事です',
+        tags: [],
+        published: false
+    }, function() {
+        console.log('add test posts');
+    });
 });
