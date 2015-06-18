@@ -2,6 +2,8 @@
 <div ng-include="'components/new-post-button/new-post-button.html'"></div>
 
 <div class="container">
+    <div ng-if="message.text" class="alert alert-dismissable {{ message.class }}">{{ message.text }}</div>
+    
     <div ng-include="'components/post-tab/post-tab.html'"></div>
     <hr/>
     <div class="row">

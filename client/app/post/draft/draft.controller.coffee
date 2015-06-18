@@ -2,10 +2,12 @@
 
 angular.module 'qiitenaiApp'
 .controller 'DraftCtrl', ($scope, $http, $location, User, Auth, Modal) ->
-    $scope.message = ''
+    $scope.message =
+        text: ''
+        class: ''
     $scope.drafts = []
 
-    $http.get('/api/drafts/')#+User.get().id)
+    $http.get('/api/drafts/')
     .success (drafts) ->
         $scope.drafts = drafts
 
@@ -19,7 +21,8 @@ angular.module 'qiitenaiApp'
     $scope.deleteDraft = (draft) ->
         $http.delete '/api/drafts/' + draft._id
         .success (res) ->
-            $scope.message = '下書きを削除しました。'
+            $scope.message.text = '下書きを削除しました。'
+            $scope.message.class = 'alert-danger'
             _.remove $scope.drafts, draft
         .error (err) ->
             console.log err
