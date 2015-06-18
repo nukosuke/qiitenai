@@ -45,19 +45,19 @@ angular.module 'qiitenaiApp'
         deleteModal = openModal(
           modal:
             dismissable: true
-            title: 'Confirm Delete'
-            html: '<p>Are you sure you want to delete <strong>' + name + '</strong> ?</p>'
+            title: '確認'
+            html: '<p>本当に <strong>' + name + '</strong> を削除しますか?</p>'
             buttons: [
               {
                 classes: 'btn-danger'
-                text: 'Delete'
+                text: '削除する'
                 click: (e) ->
                   deleteModal.close e
                   return
               }
               {
                 classes: 'btn-default'
-                text: 'Cancel'
+                text: 'キャンセル'
                 click: (e) ->
                   deleteModal.dismiss e
                   return
