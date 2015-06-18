@@ -15,21 +15,22 @@
                             <tr>
                                 <th class="col-md-1"></th>
                                 <th class="col-md-4">タイトル</th>
-                                <th class="col-md-2">タグ</th>
+                                <th class="col-md-3">タグ</th>
                                 <th class="col-md-2">作成日時</th>
-                                <th class="col-md-3"></th>
+                                <th class="col-md-2"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="draft in drafts">
                                 <td><input type="checkbox" /></td>
                                 <td>
-                                    <a href="#">{{ draft.title }}</a>
+                                    <a href="/draft/edit/{{ draft._id }}">{{ draft.title }}</a>
                                     <p>{{ draft.markdown }}</p>
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td><button class="btn btn-info"><i class="fa fa-edit"></i>編集</button> <button class="btn btn-danger"><i class="fa fa-trush"></i> 削除</button></td>                                
+                                <td><span class="label label-info" ng-repeat="tag in draft.tags"><i class="fa fa-tag"></i> {{ tag }}</span>&nbsp;</td>
+                                <td>{{ draft.created }}</td>
+                                <td>
+                                    <button ng-click="deleteDraft(draft)" class="btn btn-danger"><i class="fa fa-trash-o"></i> 削除</button></td>                                
                             </tr>
                         </tbody>
                     </table>
