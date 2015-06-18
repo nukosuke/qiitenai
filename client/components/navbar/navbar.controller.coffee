@@ -3,8 +3,8 @@
 angular.module 'qiitenaiApp'
 .controller 'NavbarCtrl', ($scope, $location, Auth) ->
   $scope.menu = [
-    #title: 'home'
-    #link: '/'
+    title: '記事管理'
+    link: '/drafts'
   ]
   $scope.isCollapsed = true
   $scope.isLoggedIn = Auth.isLoggedIn
