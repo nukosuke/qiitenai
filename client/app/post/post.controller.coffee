@@ -20,14 +20,17 @@ angular.module 'qiitenaiApp'
             $scope.message = '投稿に失敗しました。しばらく時間をおいてからもう一度試してください。'+err
 
     $scope.moveToDraft = (post) ->
-        post.isDraft = true
+        post.published = false
         $http.put '/api/posts', post
         .success (res) ->
             $scope.message = '記事を下書きに移動しました。'
-            $location.path '/draft'
         .error (err) ->
             '操作に失敗しました。しばらく時間をおいてからもう一度試してください。'+err
 
-    $scope.deleteDraft = (post) ->
+    $scope.deletePost = (post) ->
         $http.delete '/api/posts/' + post._id
-
+        .success (res) ->
+            _.remove $scope.posts, post
+            $scope.message = '記事を削除しました。'
+        .error (err) ->
+            console.log err

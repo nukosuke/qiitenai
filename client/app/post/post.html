@@ -8,6 +8,32 @@
         <div class="col-md-12">
             <div class="panel panel-default shadow-z-2">
                 <div class="panel-heading"><i class="fa fa-file-text-o"></i> 投稿済み</div>
+                <div class="panel-body">
+                    <table class="table table-hover">
+                        <thead class="row">
+                            <tr>
+                                <th class="col-md-1"></th>
+                                <th class="col-md-4">タイトル</th>
+                                <th class="col-md-3">タグ</th>
+                                <th class="col-md-2">作成日時</th>
+                                <th class="col-md-2"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="post in posts">
+                                <td><input type="checkbox" /></td>
+                                <td>
+                                    <a href="/post/edit/{{ post._id }}">{{ post.title }}</a>
+                                    <p>{{ post.markdown }}</p>
+                                </td>
+                                <td><span class="label label-info" ng-repeat="tag in post.tags"><i class="fa fa-tag"></i> {{ tag }}</span>&nbsp;</td>
+                                <td>{{ post.created }}</td>
+                                <td>
+                                    <button ng-click="deletePost(post)" class="btn btn-danger"><i class="fa fa-trash-o"></i> 削除</button></td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

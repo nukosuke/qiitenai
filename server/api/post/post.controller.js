@@ -5,10 +5,13 @@ var Post = require('./post.model');
 
 // Get list of posts
 exports.index = function(req, res) {
-  Post.find(function (err, posts) {
-    if(err) { return handleError(res, err); }
-    return res.json(200, posts);
-  });
+    Post
+        .find()
+        .where({ 'published': true })
+        .exec(function (err, posts) {
+            if(err) { return handleError(res, err); }
+            return res.json(200, posts);
+        });
 };
 
 // Get a single post
