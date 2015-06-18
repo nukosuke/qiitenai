@@ -1,19 +1,39 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'components/new-post-button/new-post-button.html'"></div>
 
-<div class="container-fluid">
+<div class="container">
+    <div ng-include="'components/post-tab/post-tab.html'"></div>
+    <hr/>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
             <div class="panel panel-default shadow-z-2">
                 <div class="panel-heading"><i class="fa fa-edit"></i> 下書き一覧</div>
-                <ul class="list-group" ng-repeat="draft in drafts">
-                    <li class="list-group-item"><a href="#">{{ draft.title }}</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="panel panel-default shadow-z-2">
-                <div class="panel-heading">投稿済み記事一覧</div>
-                
+                <div class="panel-body">
+
+                    <table class="table table-hover">
+                        <thead class="row">
+                            <tr>
+                                <th class="col-md-1"></th>
+                                <th class="col-md-4">タイトル</th>
+                                <th class="col-md-2">タグ</th>
+                                <th class="col-md-2">作成日時</th>
+                                <th class="col-md-3"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="draft in drafts">
+                                <td><input type="checkbox" /></td>
+                                <td>
+                                    <a href="#">{{ draft.title }}</a>
+                                    <p>{{ draft.markdown }}</p>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td><button class="btn btn-info"><i class="fa fa-edit"></i>編集</button> <button class="btn btn-danger"><i class="fa fa-trush"></i> 削除</button></td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
