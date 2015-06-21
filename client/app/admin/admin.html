@@ -1,21 +1,26 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-2">
-            <div class="panel panel-default">
+            <div class="panel panel-default shadow-z-2">
+                <div class="panel-body">
                 sidemenu
+                </div>
             </div>
         </div>
         <div class="col-md-10">
-            <div class="panel panel-default">
-                <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="user in users">
-                        <strong>{{user.name}}</strong><br>
-                        <span class="text-muted">{{user.email}}</span>
-                        <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
-                    </li>
-                </ul>
+            <div class="panel panel-default shadow-z-2">
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="user in users">
+                            <img src="https://s.gravatar.com/avatar/{{ user.email_hash }}?s=80" class="shadow-z-1" alt="" />
+                            <strong>{{user.name}}</strong><br>
+                            <span class="text-muted">{{user.email}}</span>
+                            <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
