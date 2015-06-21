@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: MONGOLAB_URI || 'mongodb://localhost/qiitenai-dev'
+    uri: process.env.MONGOLAB_URI || 'mongodb://localhost/qiitenai-dev'
   },
 
   seedDB: true
