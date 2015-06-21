@@ -1,7 +1,17 @@
 'use strict'
 
 angular.module 'qiitenaiApp'
-.controller 'DraftCtrl', ($scope, $http, $location, User, Auth, Modal) ->
+.controller 'DraftCtrl', ($scope, $http, $stateParams, $location, User, Auth, Modal) ->
+
+    #TODO: edit用にコントローラ分けたい
+    $scope.edit_draft = {}
+    if $stateParams.id
+        $http.get '/api/posts/'+$stateParams.id
+        .success (post) ->
+            $scope.edit_draft = post
+        .error (err) ->
+            console.log err
+            
     $scope.message =
         text: ''
         class: ''
