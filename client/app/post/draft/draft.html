@@ -26,7 +26,7 @@
                             <tr ng-repeat="draft in drafts">
                                 <td><input type="checkbox" /></td>
                                 <td>
-                                    <a href="/draft/edit/{{ draft._id }}">{{ draft.title }}</a>
+                                    <a href="/drafts/edit/{{ draft._id }}">{{ draft.title }}</a>
                                     <p>{{ draft.markdown }}</p>
                                 </td>
                                 <td><span class="label label-info" ng-repeat="tag in draft.tags"><i class="fa fa-tag"></i> {{ tag }}</span>&nbsp;</td>
