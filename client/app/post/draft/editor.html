@@ -2,15 +2,28 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6" style="padding:0;">
-            <form id="draft-form" class="form">
-                <input type="text" name="title" placeholder="タイトル" />
-                <input type="text" name="tags" placeholder="タグ" />
-                <input type="text" name="version" placeholder="バージョン" />
-                <textarea style="width:100%; resize:none;"></textarea>
-            </form>
+        <div class="col-md-6" style="">
+            <div class="well">
+                <form id="draft-form" class="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="title" placeholder="タイトル" value="{{ edit_draft.title }}" style="width: 100%;" />
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="tags" placeholder="タグ" value="{{ edit_draft.tags }}" />
+                        
+                        <input type="text" class="form-control" name="version" placeholder="バージョン" />
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" style="width:100%; height: 60vh; resize:none;">{{ edit_draft.markdown }}</textarea>
+                    </div>
+
+                    <button class="btn btn-info">投稿する</button>
+                    <button class="btn btn-flat btn-info">下書き保存</button>
+                </form>
+            </div>
         </div>
         <div class="col-md-6">
+            <div id="rendered-html"></div>
         </div>
     </div>
 </div>
