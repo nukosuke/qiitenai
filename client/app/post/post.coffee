@@ -7,15 +7,16 @@ angular.module 'qiitenaiApp'
         url: '/posts'
         templateUrl: 'app/post/post.html'
         controller: 'PostCtrl'
+        authenticate: true
         
     .state 'draft',
         url: '/drafts'
         templateUrl: 'app/post/draft/draft.html'
         controller: 'DraftCtrl'
-        #authenticate: true
+        authenticate: true
 
     .state 'editor',
         url: '/drafts/edit/:id'
         templateUrl: 'app/post/draft/editor.html'
         controller: 'DraftCtrl'
-        #authenticate: true
+        authenticate: true
