@@ -1,18 +1,24 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-md-6">
-            <div class="panel panel-primary shadow-z-2">
+            <div class="panel panel-default">
                 <div class="panel-heading">登録情報</div>
                 <div class="panel-body">
-                    id, name, email
+                  <ul>
+                    TODO: form
+                    <li>{{ getCurrentUser().name }}</li>
+                    <li>{{ getCurrentUser().email }}</li>
+                    <li>{{ getCurrentUser().created }}</li>
+                  </ul>
+                  <button class="btn btn-info">変更</button>
                 </div>
             </div>
         </div>
         
         <div class="col-md-3">
-            <div class="panel panel-primary shadow-z-2">
+            <div class="panel panel-default">
                 <div class="panel-heading">パスワードの変更</div>
                 <div class="panel-body">
                     <form class="form" name="form" ng-submit="changePassword(form)" novalidate>
@@ -53,7 +59,7 @@
         
                         <p class="help-block"> {{ message }} </p>
 
-                        <button class="btn btn-lg btn-primary" type="submit">変更</button>
+                        <button class="btn btn-info" type="submit">変更</button>
                     </form>
                 </div>
             </div>
@@ -61,7 +67,7 @@
 
 
         <div class="col-md-3">
-            <div class="panel panel-danger shadow-z-2">
+            <div class="panel panel-danger">
                 <div class="panel-heading">アカウントの削除</div>
                 <div class="panel-body">
                     <p>一度削除したアカウントは復旧できません。</p>

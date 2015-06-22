@@ -2,8 +2,9 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6" style="">
-            <div class="well">
+        <div class="col-md-6">
+            <div class="panel">
+              <div class="panel-body">
                 <form id="draft-form" class="form">
                     <div class="form-group">
                         <input type="text" class="form-control" name="title" placeholder="タイトル" value="{{ edit_draft.title }}" style="width: 100%;" />
@@ -21,10 +22,14 @@
                     <button class="btn btn-flat btn-info">下書き保存</button>
                 </form>
             </div>
+          </div>
         </div>
+
         <div class="col-md-6">
-            <div class="jumbotron">
-              <div id="rendered-html" ng-bind-html="rendered"></div>
+            <div class="panel shadow-z-1">
+              <div class="panel-body">
+                <div id="rendered-html" ng-bind-html="rendered"></div>
+              </div>
             </div>
         </div>
     </div>
