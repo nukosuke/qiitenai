@@ -5,10 +5,13 @@ angular.module 'qiitenaiApp'
 
     #TODO: edit用にコントローラ分けたい
     $scope.edit_draft = {}
+    $scope.change = ->
+        $scope.rendered = markdown.toHTML $scope.edit_draft.markdown
     if $stateParams.id
         $http.get '/api/posts/'+$stateParams.id
         .success (post) ->
             $scope.edit_draft = post
+            $scope.rendered = markdown.toHTML $scope.edit_draft.markdown
         .error (err) ->
             console.log err
             
