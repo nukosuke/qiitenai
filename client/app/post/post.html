@@ -28,7 +28,9 @@
                                     <a href="/drafts/edit/{{ post._id }}">{{ post.title }}</a>
                                     <p>{{ post.markdown }}</p>
                                 </td>
-                                <td><span class="label label-info" ng-repeat="tag in post.tags"><i class="fa fa-tag"></i> {{ tag }}</span>&nbsp;</td>
+                                <td>
+                                    <span class="label label-info" ng-repeat="tag in post.tags" style="margin: 0px 2px;"><i class="fa fa-tag"></i> {{ tag }}</span>
+                                </td>
                                 <td>{{ post.created }}</td>
                                 <td>
                                     <button ng-click="deletePost(post)" class="btn btn-danger"><i class="fa fa-trash-o"></i> 削除</button></td>                                
