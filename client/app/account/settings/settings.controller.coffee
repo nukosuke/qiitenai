@@ -3,6 +3,9 @@
 angular.module 'qiitenaiApp'
 .controller 'SettingsCtrl', ($scope, User, Auth) ->
   $scope.errors = {}
+  
+  $scope.getCurrentUser = Auth.getCurrentUser
+
   $scope.changePassword = (form) ->
     $scope.submitted = true
 
