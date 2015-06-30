@@ -91,7 +91,7 @@
                     <i class="fa fa-calendar"></i> 最近の投稿
                 </div>
                 <ul class="nav nav-stacked" ng-repeat="feed in feeds">
-                    <li><a href="#" tooltip="{{feed.info}}">{{feed.name}}</a></li>
+                    <li><a href="/posts/{{ feed._id }}" tooltip="{{feed.title}}">{{feed.title}}</a></li>
                 </ul>
             </div>
         </div>

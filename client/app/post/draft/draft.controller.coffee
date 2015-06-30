@@ -25,11 +25,25 @@ angular.module 'qiitenaiApp'
         $scope.drafts = drafts
 
     $scope.addDraft = ->
-        return if $scope.newPost is ''
-        $http.post '/api/drafts/',
-            title: $scope.newPost.title
-            tags:  $scope.newPost.tags
-            html:  $scope.newPost.html
+        envelope =
+            user: Auth.getCurrentUser()._id
+            title: $scope.edit_draft.title
+            tags:  $scope.edit_draft.tags
+            markdown:  $scope.edit_draft.markdown
+
+        if $scope.edit_draft._id
+            $http.put '/api/drafts/'+$scope.edit_draft._id, envelope
+            .success ->
+                $scope.message =
+                    text: '下書きを更新しました。'
+                    class: 'alert-success'
+        else
+            $http.post '/api/drafts/', envelope
+            .success ->
+                $scope.message =
+                    text: '下書きを保存しました。'
+                    class: 'alert-success'
+
 
     $scope.deleteDraft = (draft) ->
         $http.delete '/api/drafts/' + draft._id

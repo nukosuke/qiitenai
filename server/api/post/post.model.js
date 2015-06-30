@@ -6,7 +6,8 @@ var mongoose = require('mongoose'),
 //var markdown = require('markdown');
 
 var PostSchema = new Schema({
-    title: String,
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
+    title: { type: String, default: 'タイトルなし' },
     markdown: String,
     tags: { type: [String], index: true, default: [] },
     published: { type: Boolean, default: false },

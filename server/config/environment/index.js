@@ -58,6 +58,16 @@ var all = {
     clientSecret: process.env.GOOGLE_SECRET || 'secret',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/google/callback'
   }
+
+  //github
+    /*,
+
+  hatena: {
+    clientID:     process.env.HATENA_ID || 'id',
+    clientSecret: process.env.HATENA_SECRET || 'secret',
+    callbackURL:  (process.env.DOMAIN || '') + '/auth/hatena/callback'
+  }
+     */
 };
 
 // Export the config object based on the NODE_ENV

@@ -2,18 +2,18 @@
 
 var express = require('express');
 var controller = require('./post.controller');
+var auth = require('../../auth/auth.service');
 
 var router = express.Router();
 
 router.get('/', controller.index);
+router.get('/me', auth.isAuthenticated(), controller.user_index);
 router.get('/:id', controller.show);
-router.post('/', controller.create);
-router.put('/:id', controller.update);
-router.patch('/:id', controller.update);
-router.delete('/:id', controller.destroy);
+router.post('/', auth.isAuthenticated(), controller.create);
+router.put('/:id', auth.isAuthenticated(), controller.update);
+router.patch('/:id', auth.isAuthenticated(), controller.update);
+router.delete('/:id', auth.isAuthenticated(), controller.destroy);
 
-// draft routes
-//var draft_controller = require('./draft');
-//router.use('/drafts', draft_controller);
+
 
 module.exports = router;

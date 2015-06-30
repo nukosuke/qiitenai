@@ -8,7 +8,20 @@ exports.index = function(req, res) {
     Post
         .find()
         .where({ 'published': true })
+        .populate('user')
         .exec(function (err, posts) {
+            if(err) { return handleError(res, err); }
+            return res.json(200, posts);
+        });
+};
+
+exports.user_index = function(req, res) {
+    var userId = req.user._id;
+    Post
+        .find()
+        .where({ 'published': true })
+        .exec(function (err, posts) {
+            console.log(posts);
             if(err) { return handleError(res, err); }
             return res.json(200, posts);
         });
@@ -16,11 +29,14 @@ exports.index = function(req, res) {
 
 // Get a single post
 exports.show = function(req, res) {
-  Post.findById(req.params.id, function (err, post) {
-    if(err) { return handleError(res, err); }
-    if(!post) { return res.send(404); }
-    return res.json(post);
-  });
+    Post
+        .findById(req.params.id)
+        .populate('user')
+        .exec(function (err, post) {
+            if(err) { return handleError(res, err); }
+            if(!post) { return res.send(404); }
+            return res.json(post);
+        });
 };
 
 // Creates a new post in the DB.

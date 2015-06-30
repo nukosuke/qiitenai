@@ -6,12 +6,14 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-8">
-                            {{ getCurrentUser().name }}
-                            {{ getCurrentUser().email }}
-                        </div>
                         <div class="col-md-4">
-                            b
+                            <img src="https://s.gravatar.com/avatar/{{ user_email_hash }}?s=230" class="center-block" alt="" />
+                        </div>
+                        <div class="col-md-8">
+                            <ul>
+                                <li>{{ getCurrentUser().name }}</li>
+                                <li>{{ getCurrentUser().email }}</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -21,7 +23,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><i class="fa fa-calendar"></i> 最近の投稿</div>
                 <div class="panel-body">
-
+                    <div ng-repeat="post in posts">
+                        {{ post._creator }}
+                    </div>
                 </div>
             </div>
         </div>

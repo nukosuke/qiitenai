@@ -33,5 +33,5 @@ angular.module 'qiitenaiApp'
     $window.location.href = '/auth/' + provider
 
 
-  $http.get('/api/things').success (feeds) ->
+  $http.get('/api/posts/').success (feeds) ->
     $scope.feeds = feeds

@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'qiitenaiApp'
-.controller 'PostCtrl', ($scope, $http, $location, User, Auth) ->
+.controller 'PostCtrl', ($scope, $http, $location, $stateParams, User, Auth) ->
     $scope.message =
         text: ''
         class: ''
@@ -9,6 +9,15 @@ angular.module 'qiitenaiApp'
 
     $http.get('/api/posts').success (posts) ->
         $scope.posts = posts
+
+    if $stateParams.id
+        $http.get '/api/posts/'+$stateParams.id
+        .success (post) ->
+            $scope.post = post
+            $scope.post.user.email_hash = md5 post.user.email
+            $scope.rendered = markdown.toHTML $scope.post.markdown
+        .error (err) ->
+            console.log err
 
     $scope.addPost = ->
         return if $scope.newPost.title is '' and $scope.newPost.html is ''

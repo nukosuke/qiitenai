@@ -1,0 +1,39 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'components/new-post-button/new-post-button.html'"></div>
+
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="jumbotron">
+              <h2 class="page-header">{{ post.title }}</h2>
+              <span class="label label-info" ng-repeat="tag in post.tags" style="margin: 0px 2px;"><i class="fa fa-tag"></i> {{ tag }}</span>
+              <p style="font-size: 11pt; margin-top: 4px;">
+                  <img src="https://s.gravatar.com/avatar/{{ post.user.email_hash }}?s=24" alt="" />
+                  {{ post.user.name }}が{{ post.created }}に投稿
+              </p>
+          </div>
+      </div>
+      
+      <div class="col-md-2">
+          <div class="panel panel-default shadow-z-2">
+              <!-- mock -->
+              <ul class="nav nav-stacked" ng-repeat="thing in awesomeThings">
+                  <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
+              </ul>
+          </div>
+      </div>
+
+      <div class="col-md-10">
+          <div class="panel panel-default shadow-z-2">
+              <div class="panel-body" ng-bind-html="rendered"></div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+      <p class="pull-right"><a href="https://twitter.com/YosukeTamura">@YosukeTamura</a></p>
+      <p class="pull-left">&copy; qiitenai</p>
+  </div>
+</footer>
