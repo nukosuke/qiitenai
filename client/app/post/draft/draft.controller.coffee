@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'qiitenaiApp'
-.controller 'DraftCtrl', ($scope, $http, $stateParams, $location, User, Auth, Modal) ->
+.controller 'DraftCtrl', ($scope, $http, $stateParams, $location, User, Auth, ngToast) ->
 
     #TODO: edit用にコントローラ分けたい
     $scope.edit_draft = {}
@@ -15,9 +15,6 @@ angular.module 'qiitenaiApp'
         .error (err) ->
             console.log err
             
-    $scope.message =
-        text: ''
-        class: ''
     $scope.drafts = []
 
     $http.get('/api/drafts/me')
@@ -34,22 +31,17 @@ angular.module 'qiitenaiApp'
         if $scope.edit_draft._id
             $http.put '/api/drafts/'+$scope.edit_draft._id, envelope
             .success ->
-                $scope.message =
-                    text: '下書きを更新しました。'
-                    class: 'alert-success'
+                ngToast.success '下書きを更新しました。'
+
         else
             $http.post '/api/drafts/', envelope
             .success ->
-                $scope.message =
-                    text: '下書きを保存しました。'
-                    class: 'alert-success'
-
+                ngToast.success '下書きを保存しました。'
 
     $scope.deleteDraft = (draft) ->
         $http.delete '/api/drafts/' + draft._id
         .success (res) ->
-            $scope.message.text = '下書きを削除しました。'
-            $scope.message.class = 'alert-danger'
+            ngToast.danger '下書きを削除しました。'
             _.remove $scope.drafts, draft
         .error (err) ->
             console.log err
@@ -65,12 +57,9 @@ angular.module 'qiitenaiApp'
         if $scope.edit_draft._id
             $http.put '/api/posts/'+$scope.edit_draft._id, envelope
             .success ->
-                $scope.message =
-                    text: '記事を更新しました。'
-                    class: 'alert-success'
+                ngToast.success '記事を更新しました。'
         else
             $http.post '/api/posts/', envelope
             .success ->
-                $scope.message =
-                    text: '投稿しました。'
-                    class: 'alert-success'
+                ngToast.success '投稿しました。'
+                $location.path '/posts'

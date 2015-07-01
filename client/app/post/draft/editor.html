@@ -1,12 +1,7 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container-fluid">
-    <div ng-show="message.text">
-        <div class="alert alert-dismissable {{ message.class }}">
-            <button type="button" class="close" data-dismiss="alert">×</button>
-            {{ message.text }}
-        </div>
-    </div>
+    <toast></toast>
     <div class="row">
         <div class="col-md-6">
             <div class="panel">
