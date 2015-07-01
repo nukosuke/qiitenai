@@ -13,6 +13,16 @@ exports.index = function(req, res) {
         });
 };
 
+exports.user_index = function(req, res) {
+    var userId = req.user.id;
+    Post
+        .find()
+        .where({ user: userId, published: false })
+        .exec(function(err, posts) {
+            if(err) { return handleError(res, err); }
+            return res.json(200, posts);
+        });
+};
 // Get a single post
 /*
 exports.show = function(req, res) {

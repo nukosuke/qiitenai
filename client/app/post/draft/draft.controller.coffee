@@ -20,7 +20,7 @@ angular.module 'qiitenaiApp'
         class: ''
     $scope.drafts = []
 
-    $http.get('/api/drafts/')
+    $http.get('/api/drafts/me')
     .success (drafts) ->
         $scope.drafts = drafts
 
