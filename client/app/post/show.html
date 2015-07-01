@@ -1,21 +1,37 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 <div ng-include="'components/new-post-button/new-post-button.html'"></div>
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
       <div class="col-md-12">
-          <div class="jumbotron">
-              <h2 class="page-header">{{ post.title }}</h2>
-              <span class="label label-info" ng-repeat="tag in post.tags" style="margin: 0px 2px;"><i class="fa fa-tag"></i> {{ tag }}</span>
-              <p style="font-size: 11pt; margin-top: 4px;">
-                  <img src="https://s.gravatar.com/avatar/{{ post.user.email_hash }}?s=24" alt="" />
-                  {{ post.user.name }}が{{ post.created }}に投稿
-              </p>
+          <div class="panel panel-default">
+              <div class="panel-body">
+                  <div class="row">
+                      <div class="col-md-9">
+                          <h2 class="page-header">{{ post.title }}</h2>
+                          <span class="label label-info" ng-repeat="tag in post.tags" style="margin: 0px 2px;"><i class="fa fa-tag"></i> {{ tag }}</span>
+                          <p style="font-size: 11pt; margin-top: 4px;">
+                              <img src="https://s.gravatar.com/avatar/{{ post.user.email_hash }}?s=24" alt="" />
+                              {{ post.user.name }}が{{ post.created }}に投稿
+                          </p>
+                      </div>
+                      <div class="col-md-3">
+                          <ul>
+                              <li><i class="fa fa-folder-o"></i> ストック {{ post.stocked }}</li>
+                              <li><i class="fa fa-comment-o"></i> コメント {{ post.comment }}</li>
+                          </ul>
+                          <a href="#" class="btn btn-info center-block"><i class="fa fa-folder"></i> ストック</a>
+                      </div>
+                  </div>
+              </div>
           </div>
       </div>
       
-      <div class="col-md-2">
-          <div class="panel panel-default shadow-z-2">
+      <div class="col-md-3">
+          <div class="panel panel-default">
+              author info
+          </div>
+          <div class="panel panel-default">
               <!-- mock -->
               <ul class="nav nav-stacked" ng-repeat="thing in awesomeThings">
                   <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}</a></li>
@@ -23,8 +39,8 @@
           </div>
       </div>
 
-      <div class="col-md-10">
-          <div class="panel panel-default shadow-z-2">
+      <div class="col-md-9">
+          <div class="panel panel-default">
               <div class="panel-body" ng-bind-html="rendered"></div>
           </div>
       </div>
