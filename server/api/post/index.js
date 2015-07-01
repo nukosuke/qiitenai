@@ -8,6 +8,7 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/me', auth.isAuthenticated(), controller.user_index);
+router.get('/u/:id', auth.isAuthenticated(), controller.u_index);
 router.get('/:id', controller.show);
 router.post('/', auth.isAuthenticated(), controller.create);
 router.put('/:id', auth.isAuthenticated(), controller.update);

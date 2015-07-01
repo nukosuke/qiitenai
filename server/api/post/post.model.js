@@ -12,7 +12,8 @@ var PostSchema = new Schema({
     tags: { type: [String], index: true, default: [] },
     published: { type: Boolean, default: false },
     created: { type: Date, default: Date.now },
-    updated: { type: Date, default: Date.now }
+    updated: { type: Date, default: Date.now },
+    stocked_by: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
 
     

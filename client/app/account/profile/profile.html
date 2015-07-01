@@ -10,9 +10,12 @@
                             <img src="https://s.gravatar.com/avatar/{{ user_email_hash }}?s=230" class="center-block" alt="" />
                         </div>
                         <div class="col-md-8">
+                            <h2>{{ user.username }}</h2>
+                            <hr>
                             <ul>
-                                <li>{{ getCurrentUser().name }}</li>
-                                <li>{{ getCurrentUser().email }}</li>
+                                <li><i class="fa fa-envelope"></i> {{ user.email }}</li>
+                                <li><i class="fa fa-group"></i> {{ user.organization }}</li>
+                                <li><i class="fa fa-book"></i> {{ user.bio }}</li>
                             </ul>
                         </div>
                     </div>
@@ -24,7 +27,7 @@
                 <div class="panel-heading"><i class="fa fa-calendar"></i> 最近の投稿</div>
                 <div class="panel-body">
                     <div ng-repeat="post in posts">
-                        {{ post._creator }}
+                        <a href="/posts/{{ post._id }}">{{ post.title }}</a>
                     </div>
                 </div>
             </div>

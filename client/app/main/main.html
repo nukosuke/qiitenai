@@ -61,7 +61,7 @@
                 <!-- for logged in -->
                 <div ng-show="isLoggedIn()">
                     
-                    <img src="https://s.gravatar.com/avatar/{{ user_email_hash }}?s=230" class="center-block shadow-z-1" alt="" />
+                    <img src="https://s.gravatar.com/avatar/{{ user_email_hash }}?s=230" class="center-block" alt="" />
                     <h3 class="text-center"><i class="fa fa-user"></i> {{ getCurrentUser().name }}</h3>
                     <hr/>
                     <ul>
@@ -91,7 +91,8 @@
                     <i class="fa fa-calendar"></i> 最近の投稿
                 </div>
                 <ul class="nav nav-stacked" ng-repeat="feed in feeds">
-                    <li><a href="/posts/{{ feed._id }}" tooltip="{{feed.title}}">{{feed.title}}</a></li>
+                    <li><a href="/posts/{{ feed._id }}" tooltip="{{feed.title}}">{{feed.title}}</a>
+                        <span class="label label-info" ng-repeat="tag in feed.tags" style="margin: 0px 2px;"><i class="fa fa-tag"></i> {{ tag }}</span></li>
                 </ul>
             </div>
         </div>

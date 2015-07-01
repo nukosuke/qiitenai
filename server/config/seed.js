@@ -43,6 +43,14 @@ User.find({}).remove(function() {
     name: 'Admin',
     email: 'admin@admin.com',
     password: 'admin'
+  }, {
+    provider: 'local',
+    role: '',
+    name: '田村 洋輔',
+    email: 'tamura.yosuke.tp8@is.naist.jp',
+    organization: 'NAIST',
+    bio: '次郎系ラーメンが好きです。',
+    password: 'yosuke'
   }, function() {
       console.log('finished populating users');
     }

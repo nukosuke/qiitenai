@@ -2,6 +2,7 @@
 
 var _ = require('lodash');
 var Post = require('./post.model');
+var User = require('../user/user.model');
 
 // Get list of posts
 exports.index = function(req, res) {
@@ -22,6 +23,17 @@ exports.user_index = function(req, res) {
         .where({ user: userId, 'published': true })
         .exec(function (err, posts) {
             console.log(posts);
+            if(err) { return handleError(res, err); }
+            return res.json(200, posts);
+        });
+};
+
+exports.u_index = function(req, res) {
+    var userId = req.params.id;
+    Post
+        .find()
+        .where({ published: true, user: userId })
+        .exec(function(err, posts) {
             if(err) { return handleError(res, err); }
             return res.json(200, posts);
         });

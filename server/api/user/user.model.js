@@ -12,6 +12,8 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  organization: String,
+  bio: String,
   hashedPassword: String,
   provider: String,
   salt: String,
@@ -42,6 +44,9 @@ UserSchema
   .get(function() {
     return {
         'username': this.name,
+        'email': this.email,
+        'organization': this.organization,
+        'bio': this.bio,
         'role': this.role
     };
   });

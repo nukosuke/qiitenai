@@ -29,7 +29,16 @@
       
       <div class="col-md-3">
           <div class="panel panel-default">
-              author info
+              <div class="panel-body">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <img src="https://s.gravatar.com/avatar/{{ post.user.email_hash }}?s=64" alt="" />
+                      </div>
+                      <div>
+                          <a href="/u/{{ post.user._id }}">{{ post.user.name }}</a>
+                      </div>
+                  </div>
+              </div>
           </div>
           <div class="panel panel-default">
               <!-- mock -->

@@ -24,3 +24,9 @@ angular.module 'qiitenaiApp'
         templateUrl: 'app/account/profile/profile.html'
         controller: 'ProfileCtrl'
         authenticate: true
+
+    .state 'show-profile',
+        url: '/u/:userid'
+        templateUrl: 'app/account/profile/profile.html'
+        controller: 'ProfileCtrl'
+        authenticate: true
