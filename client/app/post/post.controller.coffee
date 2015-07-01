@@ -7,7 +7,7 @@ angular.module 'qiitenaiApp'
         class: ''
     $scope.posts = []
 
-    $http.get('/api/posts').success (posts) ->
+    $http.get('/api/posts/me').success (posts) ->
         $scope.posts = posts
 
     if $stateParams.id

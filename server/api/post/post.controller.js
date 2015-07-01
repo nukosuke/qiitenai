@@ -19,7 +19,7 @@ exports.user_index = function(req, res) {
     var userId = req.user._id;
     Post
         .find()
-        .where({ 'published': true })
+        .where({ user: userId, 'published': true })
         .exec(function (err, posts) {
             console.log(posts);
             if(err) { return handleError(res, err); }
