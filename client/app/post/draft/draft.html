@@ -26,6 +26,13 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr ng-show="drafts | isEmpty">
+                                <td></td>
+                                <td>記事がありません。</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                             <tr ng-repeat="draft in drafts">
                                 <td><input type="checkbox" /></td>
                                 <td>
