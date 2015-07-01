@@ -53,3 +53,24 @@ angular.module 'qiitenaiApp'
             _.remove $scope.drafts, draft
         .error (err) ->
             console.log err
+
+    $scope.addPost = ->
+        envelope =
+            user: Auth.getCurrentUser()._id
+            title: $scope.edit_draft.title
+            tags:  $scope.edit_draft.tags
+            markdown:  $scope.edit_draft.markdown
+            published: true
+
+        if $scope.edit_draft._id
+            $http.put '/api/posts/'+$scope.edit_draft._id, envelope
+            .success ->
+                $scope.message =
+                    text: '記事を更新しました。'
+                    class: 'alert-success'
+        else
+            $http.post '/api/posts/', envelope
+            .success ->
+                $scope.message =
+                    text: '投稿しました。'
+                    class: 'alert-success'
