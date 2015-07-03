@@ -6,7 +6,8 @@ angular.module 'qiitenaiApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'ngToast'
+  'ngToast',
+  'ngTagsInput'
 ]
 .config ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) ->
   $urlRouterProvider

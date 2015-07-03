@@ -35,7 +35,7 @@
                                     <a href="/drafts/edit/{{ draft._id }}">{{ draft.title }}</a>
                                     <p>{{ draft.markdown }}</p>
                                 </td>
-                                <td><span class="label label-info" ng-repeat="tag in draft.tags" style="margin: 0px 2px;"><i class="fa fa-tag"></i> {{ tag }}</span>&nbsp;</td>
+                                <td><span class="label label-info" ng-repeat="tag in draft.tags" style="margin: 0px 2px;"><i class="fa fa-tag"></i> {{ tag.name }}</span>&nbsp;</td>
                                 <td>{{ draft.created }}</td>
                                 <td>
                                     <button ng-click="deleteDraft(draft)" class="btn btn-danger"><i class="fa fa-trash-o"></i> 削除</button></td>                                

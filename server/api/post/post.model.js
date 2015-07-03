@@ -9,7 +9,7 @@ var PostSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     title: { type: String, default: 'タイトルなし' },
     markdown: String,
-    tags: { type: [String], index: true, default: [] },
+    tags: { type: [{_id: Schema.Types.ObjectId, name: String}], index: true, default: [] },
     published: { type: Boolean, default: false },
     created: { type: Date, default: Date.now },
     updated: { type: Date, default: Date.now },

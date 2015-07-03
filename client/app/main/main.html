@@ -92,7 +92,7 @@
                 </div>
                 <ul class="nav nav-stacked" ng-repeat="feed in feeds">
                     <li><a href="/posts/{{ feed._id }}" tooltip="{{feed.title}}">{{feed.title}}</a>
-                        <span class="label label-info" ng-repeat="tag in feed.tags" style="margin: 0px 2px;"><i class="fa fa-tag"></i> {{ tag }}</span></li>
+                        <span class="label label-info" ng-repeat="tag in feed.tags" style="margin: 0px 2px;"><i class="fa fa-tag"></i> {{ tag.name }}</span></li>
                 </ul>
             </div>
         </div>

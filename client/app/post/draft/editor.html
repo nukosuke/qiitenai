@@ -11,9 +11,7 @@
                         <input type="text" class="form-control" name="title" placeholder="タイトル" ng-model="edit_draft.title" value="{{ edit_draft.title }}" style="width: 100%;" />
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="tags" placeholder="タグ" value="{{ edit_draft.tags }}" />
-                        
-                        <input type="text" class="form-control" name="version" placeholder="バージョン" />
+                        <tags-input ng-model="edit_draft.tags" key-property="name" display-property="name" placeholder="タグ"></tags-input>
                     </div>
                     <div class="form-group">
                         <textarea id="md" ng-model="edit_draft.markdown" ng-change="change()" class="form-control" style="width:100%; height: 60vh; resize:none;">{{ edit_draft.markdown }}</textarea>

@@ -70,13 +70,13 @@ Post.find({}).remove(function() {
         creator: u,
         title: 'おいしいラーメン屋の見つけ方',
         markdown: '# あえて有名店をはずす\n\n 有名店はもちろんおいしいラーメンを出すところが多いですが、そこをあえて外してみましょう。\n\n# 激戦区をねらえ\n\n京都、大阪',
-        tags: ['ラーメン', 'つけ麺', 'グルメ'],
+        tags: [{name: 'ラーメン'}, {name: 'つけ麺'}, {name:'グルメ'}],
         published: true
     }, {
         creator: u,
         title: '公開記事',
         markdown: 'テスト',
-        tags: ['テスト', 'test'],
+        tags: [{name: 'テスト'}, {name: 'test'}],
         published: true
     }, {
         creator: u,

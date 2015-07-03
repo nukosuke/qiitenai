@@ -5,6 +5,7 @@ angular.module 'qiitenaiApp'
 
     #TODO: edit用にコントローラ分けたい
     $scope.edit_draft = {}
+    $scope.edit_draft.tags = []
     $scope.change = ->
         $scope.rendered = markdown.toHTML $scope.edit_draft.markdown
     if $stateParams.id
@@ -28,11 +29,11 @@ angular.module 'qiitenaiApp'
             tags:  $scope.edit_draft.tags
             markdown:  $scope.edit_draft.markdown
 
+        console.log envelope
         if $scope.edit_draft._id
             $http.put '/api/drafts/'+$scope.edit_draft._id, envelope
             .success ->
                 ngToast.success '下書きを更新しました。'
-
         else
             $http.post '/api/drafts/', envelope
             .success ->
